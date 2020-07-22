@@ -8,6 +8,10 @@ class LibraryTest < MiniTest::Test
     @dpl = Library.new("Denver Public Library")
     @charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     @harper_lee = Author.new({first_name: "Harper", last_name: "Lee"})
+    @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+    @professor = @charlotte_bronte.write("The Professor", "1857")
+    @villette = @charlotte_bronte.write("Villette", "1853")
+    @mockingbird = @harper_lee.write("To Kill a Mockingbird", "July 11, 1960")
   end
 
   def test_it_exists
@@ -30,11 +34,13 @@ class LibraryTest < MiniTest::Test
   def test_it_can_have_books
     @dpl.add_author(@charlotte_bronte)
     @dpl.add_author(@harper_lee)
-    @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
-    @professor = @charlotte_bronte.write("The Professor", "1857")
-    @villette = @charlotte_bronte.write("Villette", "1853")
-    @mockingbird = @harper_lee.write("To Kill a Mockingbird", "July 11, 1960")
 
+    # need to redo this one as without the flatten it returns nested arrays (I think issue is with books)
     assert_equal [@charlotte_bronte.books, @harper_lee.books].flatten, @dpl.books.flatten
+  end
+
+  def test_it_can_get_an_authors_publication_time_frame
+    assert_equal ({start: "1847", end: "1857"}), @dpl.publication_time_frame_for(@charlotte_bronte)
+    assert_equal ({start: "1960", end: "1960"}), @dpl.publication_time_frame_for(@harper_lee)
   end
 end
