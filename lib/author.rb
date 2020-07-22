@@ -14,7 +14,6 @@ class Author
     author_first_name = @first_name
     author_last_name = @last_name
     @books << Book.create_book(first_name, last_name, title, publication_date)
-    # require "pry"; binding.pry
 
     # so funky but I couldn't figure out how to return book object instead of @books array
     @books.find {|book| book.title == title}
