@@ -3,11 +3,12 @@ class Library
 
   def initialize(name)
     @name = name
-    @books = []
+    @books = [].flatten
     @authors = []
   end
 
   def add_author(author)
     @authors << author
+    @books << author.books
   end
 end
