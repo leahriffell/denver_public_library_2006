@@ -17,7 +17,7 @@ class AuthorTest < MiniTest::Test
   end
 
   def test_it_can_write_books
-    skip
+    # skip
     assert_equal [], @charlotte_bronte.books
 
     jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
@@ -25,8 +25,9 @@ class AuthorTest < MiniTest::Test
     assert_equal [jane_eyre], @charlotte_bronte.books
     assert_instance_of Book, jane_eyre
     assert_equal "Jane Eyre", jane_eyre.title
+    # @charlotte_bronte.write("Villette", "1853")
 
-    @charlotte_bronte.write("Villette", "1853")
-    assert_equal [jane_eyre, villette]
+    # also very funky but I wasn't sure how to get 2nd book's element_id or some sort of variable name
+    assert_equal [jane_eyre,@charlotte_bronte.write("Villette", "1853")],@charlotte_bronte.books
   end
 end
