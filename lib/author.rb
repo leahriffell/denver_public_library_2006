@@ -16,4 +16,16 @@ class Author
     # so funky but I couldn't figure out how to return book object instead of @books array
     @books.find {|book| book.title == title}
   end
+
+  def publication_time_frame
+    newest = @books.max_by do |book|
+      book.publication_year
+    end
+
+    oldest = @books.min_by do |book|
+      book.publication_year
+    end
+
+    {start: oldest.publication_year, end: newest.publication_year}
+  end
 end
