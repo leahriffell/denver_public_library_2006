@@ -36,7 +36,7 @@ class LibraryTest < MiniTest::Test
     @dpl.add_author(@harper_lee)
 
     # need to redo this one as without the flatten it returns nested arrays (I think issue is with books)
-    assert_equal [@charlotte_bronte.books, @harper_lee.books].flatten, @dpl.books.flatten
+    assert_equal [@charlotte_bronte.books, @harper_lee.books], @dpl.books
   end
 
   def test_it_can_get_an_authors_publication_time_frame
