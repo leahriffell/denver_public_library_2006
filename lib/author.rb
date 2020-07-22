@@ -11,13 +11,17 @@ class Author
   end
 
   def write(title, publication_date)
-    @books << Book.new({author_first_name: @first_name, author_last_name: @last_name, title: title, publication_date: publication_date})
+    author_first_name = @first_name
+    author_last_name = @last_name
+    @books << Book.create_book(first_name, last_name, title, publication_date)
+    # require "pry"; binding.pry
 
     # so funky but I couldn't figure out how to return book object instead of @books array
     @books.find {|book| book.title == title}
   end
 
   def publication_time_frame
+    # could be helper methods
     newest = @books.max_by do |book|
       book.publication_year
     end
