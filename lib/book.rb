@@ -5,6 +5,7 @@ class Book
     @author = "#{attributes[:author_first_name]} #{attributes[:author_last_name]}"
     @title = attributes[:title]
     @publication_year = attributes[:publication_date][-4..-1]
+    # .split(" ").last would have been better 
   end
 
   def self.create_book(first_name, last_name, title, publication_date)

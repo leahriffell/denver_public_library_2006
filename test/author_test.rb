@@ -29,5 +29,7 @@ class AuthorTest < MiniTest::Test
 
     # also very funky but I wasn't sure how to get 2nd book's element_id or some sort of variable name
     assert_equal [jane_eyre,@charlotte_bronte.write("Villette", "1853")],@charlotte_bronte.books
+
+    # according to mike we can make our own variables! or do a count of books here, assert to the last title, etc. 
   end
 end

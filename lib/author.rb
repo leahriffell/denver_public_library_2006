@@ -7,6 +7,7 @@ class Author
   # don't have to do this syntax. Can just do attributes withouth = {}
     @first_name = attributes[:first_name]
     @last_name = attributes[:last_name]
+    # after IC review, name should be a method not an attribute 
     @name = "#{attributes[:first_name]} #{attributes[:last_name]}"
     @books = []
   end
@@ -15,7 +16,8 @@ class Author
     @books << Book.create_book(first_name, last_name, title, publication_date)
 
     # so funky but I couldn't figure out how to return book object instead of @books array
-    @books.find {|book| book.title == title}
+    # @books.find {|book| book.title == title}
+    @books.last
   end
 
   def publication_time_frame
