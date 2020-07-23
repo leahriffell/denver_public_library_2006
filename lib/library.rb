@@ -4,6 +4,7 @@ class Library
   def initialize(name)
     @name = name
     @books = [].flatten
+    # instead of .flatten, should have created an add_books method that will shovel each book into the array (no need to flatten)
     @authors = []
   end
 
